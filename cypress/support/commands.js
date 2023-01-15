@@ -12,6 +12,16 @@
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
+Cypress.Commands.add('getProductNameAndClickAdd', (product) => {
+    cy.get(".card.h-100").each(($el, index, $list) => {
+        const text=$el.text()
+  
+        if (text.includes(product)){
+          const windex = index + 1
+          cy.get(':nth-child('+windex+') > .card > .card-footer > .btn').click()
+        }
+      })
+  })
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

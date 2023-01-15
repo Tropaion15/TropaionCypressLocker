@@ -1,0 +1,8 @@
+{
+  "name" : "Lukas",
+  "email" : "lukas.mathiasson93@gmail.com",
+  "pwd" : "12345678",
+  "gender" : "Female",
+  "sucessMsg" : "Success",
+  "phones" : ["iphone X", "Samsung Note 8", "Nokia Edge", "Blackberry"]
+}
