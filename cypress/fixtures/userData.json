@@ -3,6 +3,12 @@
   "email" : "lukas.mathiasson93@gmail.com",
   "pwd" : "12345678",
   "gender" : "Female",
+  "dateOfBirth" : "1983-11-06",
   "sucessMsg" : "Success",
-  "phones" : ["iphone X", "Samsung Note 8", "Nokia Edge", "Blackberry"]
+
+  "phones" : ["iphone X", "Samsung Note 8", "Nokia Edge", "Blackberry"],
+  "deliverySearchStr" : "Swe",
+
+  "vegetables" : ["Brocolli", "Cauliflower", "Cucumber", "Beetroot"],
+  "deliveryCountry" : "Sweden"
 }

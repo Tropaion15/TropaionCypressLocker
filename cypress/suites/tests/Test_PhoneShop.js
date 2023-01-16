@@ -4,53 +4,21 @@ import ShopPage from "../pageObjects/ShopPage"
 import CheckoutPage from "../pageObjects/CheckoutPage"
 import DeliveryPage from "../pageObjects/DeliveryPage"
 
-describe("Suite mk3", function() {
+describe("Test suite for the phone shop", function() {
 
   //pre test hook for dynamic datatable
   this.beforeEach(function () {
     cy.fixture('userData').then(function (data) {
       this.data = data
     })
-  })
-
-  it("Data fill for a form", function() {
-    
-    //instance pageObject
-    const formPage = new FormPage() 
-
-    //visit page
-    cy.visit("https://rahulshettyacademy.com/angularpractice/")  
-
-    //data fill and validation
-    formPage.getName().type(this.data.name)
-
-    formPage.getEmail().type(this.data.email)
-
-    formPage.getPwd().type(this.data.pwd)
-
-    formPage.getIceCream().check()
-
-    formPage.getGender().select(this.data.gender)
-
-    formPage.getEmployed().check()
-
-    formPage.getEntrepreneur().should("be.disabled")
-
-    formPage.getDate().type("1983-11-06")
-
-    formPage.getTwoWayBinder().should("have.value",this.data.name)
-
-    //submit and 
-    formPage.getSubmitBtn().click()
-
-    //check message
-    formPage.getConfirmationAlrt().then(function(element) {
-      const actualText = element.text()
-      expect(actualText.includes(this.data.sucessMsg)).to.be.true
+    cy.fixture('webPages').then(function (web) {
+      this.web = web
     })
   })
-
-  it("Shop, compare, checkout, deliver", function() {
+/***
+ * This test adds some phones proceeds to checkout, compares their total cost to the pages own sum, then selects a country of delivery and confirms the success message
+ */
+  it("Add items, check total value, deliver to country", function() {
     
     //instance pageObject
     const formPage = new FormPage()
@@ -59,7 +27,7 @@ describe("Suite mk3", function() {
     const deliveryPage = new DeliveryPage()
     
     //visit page
-    cy.visit("https://rahulshettyacademy.com/angularpractice/")  
+    cy.visit(this.web.angularpractice)  
 
     //navigate to shop
     formPage.getShopButton().click()
@@ -95,7 +63,7 @@ describe("Suite mk3", function() {
     //navigate to delivery page
     checkoutPage.getCheckoutButton().click()
 
-    deliveryPage.getCountryBox().type("Swe")
+    deliveryPage.getCountryBox().type(this.data.deliverySearchStr)
     cy.wait(5000)
     deliveryPage.getCountrySuggestions().click()
     deliveryPage.getCheckbox().click({ force: true })
@@ -103,8 +71,7 @@ describe("Suite mk3", function() {
 
     deliveryPage.getConfirmationText().then(function (element) {
       const actualText = element.text()
-      expect(actualText.includes("Success")).to.be.true
+      expect(actualText.includes(this.data.sucessMsg)).to.be.true
     })
-
   })
 })
