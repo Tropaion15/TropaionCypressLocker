@@ -27,8 +27,8 @@ describe("Test suite for the vegetable store", function() {
     //visit page
     cy.visit(this.web.seleniumpractice)
     
+    //wait for elemnts to appear then add some vegetables from userData using custom command
     cy.wait(500)
-    //add some vegetables from userData using custom command
     for (let i=0; i < this.data.vegetables.length; i++) {
       cy.getVegetableNameAndClickAdd(this.data.vegetables[i])
     }

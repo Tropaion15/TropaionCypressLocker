@@ -13,6 +13,7 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //Primary use in the Test_PhoneShop.js
+
 Cypress.Commands.add('getProductNameAndClickAdd', (product) => {
   cy.get(".card.h-100").each(($el, index, $list) => {
     const text=$el.text()

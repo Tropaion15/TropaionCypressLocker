@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Tropaion15/TropaionCypressLocker/issues"
   },
-  "homepage": "https://github.com/Tropaion15/TropaionCypressLocker#readme"
+  "homepage": "https://github.com/Tropaion15/TropaionCypressLocker#readme",
+  "devDependencies": {
+    "mysql": "^2.18.1"
+  }
 }
